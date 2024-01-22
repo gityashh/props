@@ -1,0 +1,92 @@
+*{
+    padding: 0%;
+    margin: 0%;
+    box-sizing: border-box;
+    font-family: prop;
+}
+
+html,body{
+    height: 100%;
+    width: 100%;
+}
+@font-face {
+    font-family: prop;
+    src: url(./3534416bbfdcc9be-s.p.woff2);
+}
+
+#main{
+    width: 100%;
+    position: relative;
+}
+
+#nav{
+    height: 7vh;
+    width: 100vw;
+    background-color: #F3F0EA;
+    padding: 1.8vh 2vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#nav #logo{
+    font-size: 1vw;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: #4C3D30;
+}
+#centerNav{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+#lines{
+    margin-left: 3vw;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.line{
+    height: 1px;
+    width: 2vw;
+    background-color: #4C3D30;
+}
+#centerNav h4{
+    font-size: 1vw;
+    text-transform: uppercase;
+    font-weight: 400;
+    color: #4C3D30;
+}
+
+#rightNav{
+    display: flex;
+    align-items: center;
+    gap: 3vw;
+}
+
+#rightNav h4{
+    font-size: 1vw;
+    text-transform: uppercase;
+    font-weight: 400;
+    color: #4C3D30;
+}
+#cart{
+    display: flex;
+    align-items: center;
+    gap: .8vw;
+}
+
+#video{
+    width: 100vw;
+    height: 200vh;
+    overflow: hidden;
+    position: relative;
+}
+
+#video video{
+    width: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: -58%;
+    transform: scale(1.3);
+}
