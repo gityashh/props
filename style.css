@@ -6,8 +6,9 @@
 }
 
 html,body{
-    height: 100%;
+    /* height: 100%; */
     width: 100%;
+    overflow: hidden;
 }
 @font-face {
     font-family: prop;
@@ -27,6 +28,8 @@ html,body{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: fixed;
+    z-index: 80;
 }
 
 #nav #logo{
@@ -78,7 +81,7 @@ html,body{
 
 #video{
     width: 100vw;
-    height: 200vh;
+    height: 160vh;
     overflow: hidden;
     position: relative;
 }
@@ -87,6 +90,129 @@ html,body{
     width: 100%;
     object-fit: cover;
     position: absolute;
-    top: -58%;
+    top: -70%;
     transform: scale(1.3);
+    z-index: -99;
+}
+
+#page1Content{
+    height: 100%;
+    width: 100vw;
+    position: relative;
+    z-index: 50;
+    top: 0%;
+    background-color: rgba(0, 0, 0, 0.122);
+}
+#title{
+    overflow: hidden;
+    width: 102vw;  
+    height: 65vh;
+    color:#F3F0EA;   
+    transform: translateX(-1.5%);
+}
+#title h1{
+    font-size: 32vw;
+    font-weight: 400;
+}
+#title span{
+    display: inline-block;
+}
+#sub{
+    display: flex;
+    flex-direction: column;
+    margin-left: 7vw;
+    gap: 20px;
+    /* transform: translateY(-65%); */
+}
+#sub h4{
+    color: #F3F0EA;
+    font-size: 1.1vw;
+    font-weight: 300;
+    text-transform: uppercase;
+}
+
+#button{
+    height: 50px;
+    width: 250px;
+    border-radius: 50px;
+    border: 1px #F3F0EA solid;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 5px;
+    padding-left: 15px;
+}
+#button h4{
+    font-size: .95vw;
+}
+#arrow{
+    height: 40px;
+    width: 40px;
+    border-radius: 50px;
+    background-color: #F3F0EA;
+    padding: 12px;
+}
+#arrow i{
+    display: block;
+    transform: scale(2);
+}
+#loader{
+    height: 100vh;
+    width: 100vw;
+    background-color: #F3F0EA;
+    position: fixed;
+    z-index: 99;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10vh;
+}
+#imageContainer{
+    height: 30vw;
+    width: 25vw;
+    position: relative;
+    overflow: hidden;
+}
+#imageContainer img{
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    width: 100%;
+}
+
+#load{
+    height: 20vh;
+    width: 35vw;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    opacity: 0;
+    overflow: hidden;
+}
+#load h1{
+    font-size: 10vw;
+    font-weight: 500;
+    color: #4C3D30;
+}
+#percent{
+    transform: translateY(50%);
+}
+#open{
+    transform: translateY(20%);
+}
+#load span{
+    display: inline-block;
+}
+#grow{
+    position: absolute;
+    display: flex;
+    top: 61.25%;
+    opacity: 1;
+}
+#grow h1{
+    font-size: 10vw;
+    font-weight: 500;
+    color: #4C3D30;
 }
