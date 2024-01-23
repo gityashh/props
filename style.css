@@ -6,10 +6,11 @@
 }
 
 html,body{
-    /* height: 100%; */
+    height: 100%;
     width: 100%;
     overflow: hidden;
 }
+
 @font-face {
     font-family: prop;
     src: url(./3534416bbfdcc9be-s.p.woff2);
@@ -166,6 +167,7 @@ html,body{
     flex-direction: column;
     align-items: center;
     padding-top: 10vh;
+    top: -100%;
 }
 #imageContainer{
     height: 30vw;
@@ -177,7 +179,7 @@ html,body{
     height: 100%;
     object-fit: cover;
     position: absolute;
-    width: 100%;
+    width: 0%;
 }
 
 #load{
