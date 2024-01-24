@@ -77,7 +77,8 @@ gsap.to("#loader",{
     opacity:0,
     duration:2,
     delay:6,
-    ease:"expo.inOut"
+    ease:"expo.inOut",
+    display:"none"
 })
 
 gsap.to("#percent span",{
@@ -123,3 +124,96 @@ setTimeout(() => {
     document.body.style.overflow = "visible"
     document.documentElement.style.overflow = "visible"
 }, 5000);
+
+var lines = document.querySelector("#lines")
+var flag = 0;
+ lines.addEventListener("click",function () {
+    if (flag == 0) {
+        document.body.style.overflow = "hidden"
+        document.documentElement.style.overflow = "hidden"
+        gsap.to("#one",{
+            rotation:45,
+            duration:1,
+            transformOrigin:"center center"
+        })
+        gsap.to("#two",{
+            rotation:-45,
+            duration:1,
+            transformOrigin:"center center"
+        })
+        gsap.to("#rightNav",{
+            opacity:0,
+            duration:1.5
+        })
+        gsap.to("#atags span",{
+            y:"-100%",
+            duration:0.5,
+            stagger:0.02,
+            delay:0.4,
+            ease: "expo.InOut"
+        })
+        gsap.to("#navToggle",{
+            height:"100vh",
+            duration:1.5,
+            ease:"expo.inOut"
+        })
+        gsap.to("#options",{
+            y:"0%",
+            duration:1.5,
+            ease:"expo.inOut"
+        })
+        flag = 1;
+    }
+    else{
+        document.body.style.overflow = "visible"
+        document.documentElement.style.overflow = "visible"
+        gsap.to("#one",{
+            rotation:0,
+            duration:1,
+            transformOrigin:"center center"
+        })
+        gsap.to("#two",{
+            rotation:0,
+            duration:1,
+            transformOrigin:"center center"
+        })
+        gsap.to("#rightNav",{
+            opacity:1,
+            duration:2
+        })
+        gsap.to("#atags span",{
+            y:0,
+            duration:0.4,
+            stagger:-0.02,
+            ease: "expo.InOut"
+        })
+        gsap.to("#navToggle",{
+            height:"0vh",
+            duration:1.5,
+            ease:"expo.inOut"
+        })
+        gsap.to("#options",{
+            y:"-100%",
+            duration:1.5,
+            ease:"expo.inOut"
+        })
+        flag = 0;
+    }
+ })
+ 
+var atags = document.querySelectorAll("#atags h1")
+
+// atags.forEach(element => {
+//     element.addEventListener("mouseenter",function () {
+//         atags.style.filter = "blur(10px)"
+//     })
+//     element.addEventListener("mouseleave",function () {
+//         element.style.filter = "blur(0px)"
+//     })
+// });
+
+atags.forEach(function (e) {
+    splitter(e)
+})
+
+

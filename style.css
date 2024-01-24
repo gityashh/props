@@ -48,7 +48,7 @@ html,body{
     margin-left: 3vw;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 6px;
 }
 .line{
     height: 1px;
@@ -78,6 +78,72 @@ html,body{
     display: flex;
     align-items: center;
     gap: .8vw;
+}
+
+#navToggle{
+    height: 0vh;
+    width: 100vw;
+    position: absolute;
+    z-index: 60;
+    background-color: rgba(0, 0, 0, 0.371);
+    backdrop-filter: blur(10px); 
+}
+#options{
+    transform: translateY(-100%);
+    height: 45vh;
+    width: 100%;
+    background-color: #F3F0EA;
+    display: flex;
+    justify-content: space-between;
+    padding-right: 20px;
+    padding-bottom: 20px;
+}
+#atags{
+    height: 100%;
+    width: 60%;
+    display: flex;
+    padding: 15vh 30px;
+    flex-wrap: wrap;
+    gap: 0px;
+    align-items: center;
+    justify-content: flex-start;
+}
+#atags a{
+    height: 10vh;
+    font-size: 4.2vw;
+    color: black;
+    text-transform: uppercase;
+    text-decoration: none;
+    margin-right: 40px;
+    filter: blur(0px);
+}
+
+#atags h1{
+    font-size: 4.2vw;
+    color: black;
+    text-transform: uppercase;
+    text-decoration: none;
+    margin-right: 40px;
+    font-weight: 400;
+    transform: translateY(100%);
+}
+
+.at{
+    /* background-color: #4C3D30; */
+    overflow: hidden;
+}
+#home{
+    font-style: italic;
+}
+.at span{
+    display: inline-block;
+}
+
+#navImage{
+    height: 110%;
+    width: 20vw;
+    background-color: #4C3D30;
+    transform: translateY(-10%);
 }
 
 #video{
