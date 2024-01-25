@@ -90,7 +90,7 @@ html,body{
 }
 #options{
     transform: translateY(-100%);
-    height: 45vh;
+    height: 50vh;
     width: 100%;
     background-color: #F3F0EA;
     display: flex;
@@ -109,13 +109,15 @@ html,body{
     justify-content: flex-start;
 }
 #atags a{
+   
     height: 10vh;
     font-size: 4.2vw;
-    color: black;
+    color: rgba(0, 0, 0, 0.301);
     text-transform: uppercase;
     text-decoration: none;
     margin-right: 40px;
     filter: blur(0px);
+    
 }
 
 #atags h1{
@@ -123,9 +125,10 @@ html,body{
     color: black;
     text-transform: uppercase;
     text-decoration: none;
-    margin-right: 40px;
+    margin-right: 35px;
     font-weight: 400;
     transform: translateY(100%);
+    padding-left: 14px;
 }
 
 .at{
@@ -140,10 +143,13 @@ html,body{
 }
 
 #navImage{
+    opacity: 0;
     height: 110%;
     width: 20vw;
-    background-color: #4C3D30;
     transform: translateY(-10%);
+    background-size: cover;
+    background-position: center;
+    background-image: none;
 }
 
 #video{

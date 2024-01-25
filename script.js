@@ -202,18 +202,40 @@ var flag = 0;
  })
  
 var atags = document.querySelectorAll("#atags h1")
+console.log(atags);
 
-// atags.forEach(element => {
-//     element.addEventListener("mouseenter",function () {
-//         atags.style.filter = "blur(10px)"
-//     })
-//     element.addEventListener("mouseleave",function () {
-//         element.style.filter = "blur(0px)"
-//     })
-// });
+atags.forEach(element => {
+    console.log(element.id);
+    element.addEventListener("mouseenter",function () {
+        gsap.to("#navImage",{
+            opacity:1,
+            backgroundImage:`url(./${element.getAttribute("localUrl")})`,
+            duration:0,
+            ease:"expo.in"
+        }) 
+       gsap.to(".at h1",{
+         filter: "blur(5px)",
+         color: "rgba(0, 0, 0, 0.401)"
+       })
+       gsap.to(`.at #${element.id}`,{
+        filter: "blur(0px)",
+        color: "black"
+       })
+    })
+    element.addEventListener("mouseleave",function () {
+        gsap.to(".at h1",{
+            filter: "blur(0px)",
+            color: "black"
+        })
+        gsap.to("#navImage",{
+            opacity:0,
+            duration:0,
+            ease:"expo.in"
+        })
+    })
+});
 
 atags.forEach(function (e) {
     splitter(e)
 })
-
 
