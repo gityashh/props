@@ -1,3 +1,33 @@
+gsap.registerPlugin(ScrollTrigger);
+
+// Using Locomotive Scroll from Locomotive https://github.com/locomotivemtl/locomotive-scroll
+
+const locoScroll = new LocomotiveScroll({
+  el: document.querySelector("#main"),
+  smooth: true
+});
+// each time Locomotive Scroll updates, tell ScrollTrigger to update too (sync positioning)
+locoScroll.on("scroll", ScrollTrigger.update);
+
+// tell ScrollTrigger to use these proxy methods for the "#main" element since Locomotive Scroll is hijacking things
+ScrollTrigger.scrollerProxy("#main", {
+  scrollTop(value) {
+    return arguments.length ? locoScroll.scrollTo(value, 0, 0) : locoScroll.scroll.instance.scroll.y;
+  }, // we don't have to define a scrollLeft because we're only scrolling vertically.
+  getBoundingClientRect() {
+    return {top: 0, left: 0, width: window.innerWidth, height: window.innerHeight};
+  },
+  // LocomotiveScroll handles things completely differently on mobile devices - it doesn't even transform the container at all! So to get the correct behavior and avoid jitters, we should pin things with position: fixed on mobile. We sense it by checking to see if there's a transform applied to the container (the LocomotiveScroll-controlled element).
+  pinType: document.querySelector("#main").style.transform ? "transform" : "fixed"
+});
+
+// each time the window updates, we should refresh ScrollTrigger and then update LocomotiveScroll. 
+ScrollTrigger.addEventListener("refresh", () => locoScroll.update());
+
+// after everything is set up, refresh() ScrollTrigger and update LocomotiveScroll because padding may have been added for pinning, etc.
+ScrollTrigger.refresh();
+
+
 gsap.to("#video video", {
     scrollTrigger: {
       trigger: "#main",
@@ -24,31 +54,31 @@ function splitter(title) {
 }
 
 
-// gsap.from("#title span",{
-//     y:500,
-//     duration:.6,
-//     stagger:.1,
-//     ease: "slow(0.7, 0.7, false)",
-//     delay:7,
-// })
-// gsap.from("#nav",{
-//     opacity:0,
-//     duration:1.2,
-//     ease: "slow(0.7, 0.7, false)",
-//     delay:8,
-// })
-// gsap.from("#sub",{
-//     opacity:0,
-//     duration:1.2,
-//     ease: "slow(0.7, 0.7, false)",
-//     delay:8,
-// })
-// gsap.from("#vdo",{
-//     scale:3,
-//     duration:1.2,
-//     ease: "slow(0.7, 0.7, false)",
-//     delay:6.5
-// })
+gsap.from("#title span",{
+    y:500,
+    duration:.6,
+    stagger:.1,
+    ease: "slow(0.7, 0.7, false)",
+    delay:7,
+})
+gsap.from("#nav",{
+    opacity:0,
+    duration:1.2,
+    ease: "slow(0.7, 0.7, false)",
+    delay:8,
+})
+gsap.from("#sub",{
+    opacity:0,
+    duration:1.2,
+    ease: "slow(0.7, 0.7, false)",
+    delay:8,
+})
+gsap.from("#vdo",{
+    scale:3,
+    duration:1.2,
+    ease: "slow(0.7, 0.7, false)",
+    delay:6.5
+})
 
 
 var image = document.querySelectorAll(".image")
@@ -66,10 +96,10 @@ tl.to(".image",{
     ease:"cubic-bezier(1,-0.01,0,1)"
 })
 tl.to(".image",{
-    width:"0%",
+    x:"100%",
     duration:0.5,
     stagger:-0.08,
-    ease:"cubic-bezier(1,-0.01,0,1)",
+    ease:"slow(0.7, 1, true)",
     delay:2
 })
 
@@ -210,7 +240,7 @@ atags.forEach(element => {
         gsap.to("#navImage",{
             opacity:1,
             backgroundImage:`url(./${element.getAttribute("localUrl")})`,
-            duration:0,
+            duration:0.3,
             ease:"expo.in"
         }) 
        gsap.to(".at h1",{
@@ -227,15 +257,69 @@ atags.forEach(element => {
             filter: "blur(0px)",
             color: "black"
         })
-        gsap.to("#navImage",{
-            opacity:0,
-            duration:0,
-            ease:"expo.in"
-        })
     })
 });
+var atagOuter = document.querySelector("#atags")
+atagOuter.addEventListener("mouseleave",function(){
+    gsap.to("#navImage",{
+        opacity:0,
+        duration:0.4,
+        ease:"expo.in"
+    })
+})
 
 atags.forEach(function (e) {
     splitter(e)
 })
 
+document.querySelector("#mid").addEventListener("mouseenter",function(){
+    gsap.to("#box",{
+        backgroundColor:"#F3F0EA",
+        color: "#4C3D30",
+        duration:0.4,
+    })
+    gsap.to("#mid img",{
+        scale:"1.1",
+        duration:0.4,
+    })
+})
+document.querySelector("#mid").addEventListener("mouseleave",function(){
+    gsap.to("#box",{
+        backgroundColor:"transparent",
+        color: "transparent",
+        duration:0.4,
+    })
+    gsap.to("#mid img",{
+        scale:"1",
+        duration:0.4,
+    })
+})
+
+document.querySelector("#button2").addEventListener("mouseenter",function(){
+    gsap.to("#outer h4",{
+        y:"-100%",
+        duration:0.3,
+    })
+    gsap.to("#arrow2 i",{
+        x:"-250%",
+        duration:0.2
+    })
+})
+
+document.querySelector("#button2").addEventListener("mouseleave",function(){
+    gsap.to("#outer h4",{
+        y:"0%",
+        duration:0.3,
+    })
+    gsap.to("#arrow2 i",{
+        x:"0%",
+        duration:0.2
+    })
+})
+
+gsap.to("#caseroll",{
+    x:"-203.5%",
+    duration:20,
+    repeat:-1,
+    ease:"linear"
+})
