@@ -438,10 +438,11 @@ html,body{
     transform: scale(2);
 }
 #page3{
-    height: 100vh;
+    height: 300vh;
     width: 100vw;
     background-color: #F3F0EA;
     padding: 1.5vw;
+    overflow-x: hidden;
 }
 #page3 h1{
     font-size: 3vw;
@@ -455,6 +456,7 @@ html,body{
     align-items: center;
     gap: 20px;
     transform: translateX();
+
 }
  .card{
     height: 32.5vw;
